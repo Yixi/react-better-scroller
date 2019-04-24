@@ -5,7 +5,7 @@ import Scroller from '../src';
 class ScrollA extends React.PureComponent {
 
   state = {
-    data1: new Array(100).fill(true),
+    data1: new Array(10).fill(true),
     isRefresh: false,
     isLoading: false
   }

@@ -44,13 +44,15 @@ export default class Scroller extends React.PureComponent {
     if (this.scrollInstance) {
       if (this.props.isRefresh === false && prevProps.isRefresh === true) {
         this.scrollInstance.finishPullDown()
+        this.scrollInstance.refresh()
       }
 
       if (this.props.isLoading === false && prevProps.isLoading === true) {
         this.scrollInstance.finishPullUp()
+        this.scrollInstance.refresh()
       }
 
-      this.scrollInstance.refresh()
+      // this.scrollInstance.refresh()
     }
 
   }
@@ -76,7 +78,7 @@ export default class Scroller extends React.PureComponent {
       })
 
       this.scrollInstance.on('pullingUp', () => {
-        console.log('pull load')
+        console.log('pulling up')
         this.props.onPullUpLoad && this.props.onPullUpLoad()
       })
     }
@@ -84,14 +86,20 @@ export default class Scroller extends React.PureComponent {
 
   render() {
     return (
-      <div style={wrapperStyle} ref={this.scrollElementRef}>
-        <div>
+      <div
+        style={wrapperStyle}
+        ref={this.scrollElementRef}
+        className="y-react-better-scroller"
+      >
+        <div className="y-react-better-scroller-inner">
           {this.props.children}
           {this.props.isLoading && <div>{this.props.loadPlaceholder}</div>}
         </div>
         {
           this.props.isRefresh &&
-          <div style={refreshStyle}>{this.props.refreshPlaceholder}</div>
+          <div style={refreshStyle}>
+            {this.props.refreshPlaceholder}
+          </div>
         }
       </div>
     )

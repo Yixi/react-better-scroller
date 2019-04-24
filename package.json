@@ -1,7 +1,7 @@
 {
   "name": "react-better-scroller",
   "description": "mobile better scroll react wrapper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "repository": "git@github.com:Yixi/react-better-scroller.git",
   "author": "Yixi <lyh1112@gmail.com>",
@@ -13,26 +13,31 @@
   "scripts": {
     "doc": "webpack-dev-server --config scripts/webpack.doc.js --progress",
     "doc:build": "webpack --config scripts/webpack.doc.build.js --progress",
-    "doc:publish": "npm run doc:build && node ./scripts/gh-pages.js"
+    "doc:publish": "npm run doc:build && node ./scripts/gh-pages.js",
+    "build": "babel ./src --out-dir ./dist",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "better-scroll": "^1.15.2",
+    "prop-types": "^15.7.2"
   },
   "peerDependencies": {
     "better-scroll": "^1.15.2",
     "react": "^16.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
-    "better-scroll": "^1.15.2",
     "clean-webpack-plugin": "^2.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-react": "^7.12.4",
     "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "webpack": "^4.30.0",
